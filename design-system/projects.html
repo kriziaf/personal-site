@@ -25,13 +25,13 @@
 
   <div class="ds-toolbar">
     <span>6 Projects</span>
-    <button class="ds-toggle" type="button" role="switch" aria-checked="true" id="view">
+    <button class="ds-toggle" type="button" role="switch" aria-checked="false" id="view">
       <span>Image View</span><span class="ds-toggle__track"><span class="ds-toggle__thumb"></span></span><span>List View</span>
     </button>
     <span>1999-2023</span>
   </div>
 
-  <section id="list">
+  <section id="list" hidden>
     <table class="ds-table">
       <thead><tr><th>Project N°</th><th>Name</th><th>Location</th><th>Year</th></tr></thead>
       <tbody>
@@ -45,20 +45,25 @@
     </table>
   </section>
 
-  <section id="images" class="ds-grid" hidden>
-    <a class="ds-card" href="#"><img alt="" src=""><p class="ds-card__caption">Lakehouse<span class="ds-card__meta"><br>Auckland, New Zealand</span></p></a>
-    <a class="ds-card" href="#"><img alt="" src=""><p class="ds-card__caption">Sandstone Residence<span class="ds-card__meta"><br>California, USA</span></p></a>
+  <section id="images" class="ds-grid">
+    <a class="ds-card ds-card--placeholder" style="--ph:#8a8a8a" href="#"><p class="ds-card__caption">Lakehouse<span class="ds-card__meta"><br>Auckland, New Zealand</span></p></a>
+    <a class="ds-card ds-card--placeholder" style="--ph:#a9cfd6" href="#"><p class="ds-card__caption">Sandstone Residence<span class="ds-card__meta"><br>California, USA</span></p></a>
+    <a class="ds-card ds-card--placeholder" style="--ph:#b9a58d" href="#"><p class="ds-card__caption">Desert Oasis<span class="ds-card__meta"><br>Utah, USA</span></p></a>
+    <a class="ds-card ds-card--placeholder" style="--ph:#c9d0d8" href="#"><p class="ds-card__caption">Coast Retreat<span class="ds-card__meta"><br>Andalusia, Spain</span></p></a>
+    <a class="ds-card ds-card--placeholder" style="--ph:#4a5058" href="#"><p class="ds-card__caption">Midnight Haven<span class="ds-card__meta"><br>Lofoten Islands, Norway</span></p></a>
+    <a class="ds-card ds-card--placeholder" style="--ph:#9c9c98" href="#"><p class="ds-card__caption">Concrete Annex<span class="ds-card__meta"><br>Basel, Switzerland</span></p></a>
   </section>
 
   <script>
-    const t = document.getElementById('view'), list = document.getElementById('list'), imgs = document.getElementById('images');
-    t.addEventListener('click', () => {
-      const listView = t.getAttribute('aria-checked') !== 'true';
-      t.setAttribute('aria-checked', listView);
-      list.hidden = !listView; imgs.hidden = listView;
-    });
-    // start in list view
-    list.hidden = false; imgs.hidden = true;
+    const toggle = document.getElementById('view'), list = document.getElementById('list'), images = document.getElementById('images');
+    // aria-checked="true" = List View (thumb right), "false" = Image View (thumb left)
+    function setView(isList) {
+      toggle.setAttribute('aria-checked', String(isList));
+      list.hidden = !isList;
+      images.hidden = isList;
+    }
+    toggle.addEventListener('click', () => setView(toggle.getAttribute('aria-checked') !== 'true'));
+    setView(false);
   </script>
 </body>
 </html>

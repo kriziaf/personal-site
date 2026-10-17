@@ -75,3 +75,6 @@
   .ds-toolbar { grid-template-columns: 1fr; gap: var(--space-1); justify-items: start; }
   .ds-toolbar > :last-child { justify-self: start; }
 }
+
+[hidden] { display: none !important; }
+.ds-card--placeholder { background: var(--ph, #ddd); }
