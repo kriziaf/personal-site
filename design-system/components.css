@@ -1,6 +1,6 @@
 @import "tokens.css";
 
-.ds-page { background: var(--color-bg); color: var(--color-fg); font-family: var(--font-mono); font-size: var(--text-md); line-height: var(--lh-tight); letter-spacing: var(--tracking); margin: 0; min-height: 100vh; }
+.ds-page { background: var(--color-bg); color: var(--color-fg); font-family: var(--font-body); font-size: var(--text-md); line-height: var(--lh-tight); letter-spacing: var(--tracking); margin: 0; min-height: 100vh; }
 
 /* Header: wordmark left, menu trigger right */
 .ds-header { display: flex; justify-content: space-between; align-items: center; padding: var(--space-2) var(--gutter); }

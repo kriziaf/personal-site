@@ -1,10 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&display=swap");
+
 :root {
   --color-bg: #ffffff;
   --color-fg: #0a0a0a;
   --color-muted: #6b6b6b;
   --color-line: #e6e6e6;
 
-  --font-mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-body: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
   --text-sm: 14px;
   --text-md: 16px;
   --lh-tight: 1.4;
