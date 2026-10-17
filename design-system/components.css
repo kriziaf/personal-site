@@ -26,3 +26,52 @@
 @media (max-width: 640px) {
   :root { --gutter: 16px; --space-5: 64px; --space-4: 40px; }
 }
+
+/* Header, expanded: wordmark + nav list + Close, with bottom rule */
+.ds-header--open { align-items: flex-start; border-bottom: 1px solid var(--color-muted); padding-bottom: var(--space-2); }
+.ds-nav { list-style: none; margin: 0 auto 0 var(--space-3); padding: 0; display: flex; flex-direction: column; gap: 2px; font-size: var(--text-sm); }
+.ds-nav a { color: inherit; text-decoration: none; }
+.ds-nav a:hover, .ds-nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 3px; }
+.ds-header--open .ds-wordmark, .ds-header--open .ds-menu-trigger { font-size: var(--text-sm); }
+
+/* Marquee display title: oversized, scrolling horizontally */
+.ds-marquee { overflow: hidden; white-space: nowrap; padding: var(--space-2) 0 var(--space-4); }
+.ds-marquee__track { display: inline-flex; gap: .4em; font-size: var(--text-display); line-height: var(--lh-display); text-transform: uppercase; letter-spacing: -0.04em; animation: ds-marquee 30s linear infinite; }
+@keyframes ds-marquee { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .ds-marquee__track { animation: none; } }
+
+/* Toolbar: count left, view toggle centre, range right */
+.ds-toolbar { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: var(--space-2) var(--gutter); font-size: var(--text-sm); }
+.ds-toolbar > :last-child { justify-self: end; }
+
+/* View toggle (switch between two labelled options) */
+.ds-toggle { display: inline-flex; align-items: center; gap: var(--space-1); font: inherit; background: none; border: 0; color: inherit; cursor: pointer; padding: 2px; }
+.ds-toggle:focus-visible { outline: var(--focus-ring); }
+.ds-toggle__track { width: 62px; height: 24px; border: 1px solid var(--color-fg); border-radius: 999px; position: relative; }
+.ds-toggle__thumb { position: absolute; top: 3px; left: 4px; width: 16px; height: 16px; border-radius: 50%; background: var(--color-fg); transition: transform .2s ease; }
+.ds-toggle[aria-checked="true"] .ds-toggle__thumb { transform: translateX(37px); }
+
+/* Data table: ruled rows, last column right-aligned */
+.ds-table { width: calc(100% - 2 * var(--gutter)); margin: 0 var(--gutter); border-collapse: collapse; font-size: var(--text-sm); }
+.ds-table th { font-weight: 400; text-align: left; padding: var(--space-2) 0; border-bottom: var(--rule); }
+.ds-table td { height: var(--row-h); border-bottom: var(--rule); padding: 0; }
+.ds-table th:last-child, .ds-table td:last-child { text-align: right; }
+.ds-table a { color: inherit; text-decoration: none; }
+.ds-table tr:hover td { background: #f5f5f5; }
+.ds-table .ds-row-arrow::before { content: "\2197"; margin-right: var(--space-1); }
+
+/* Image card grid with caption overlay and hover arrow */
+.ds-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--card-gap); padding: 0 var(--gutter) var(--space-4); }
+.ds-card { position: relative; display: block; color: #fff; text-decoration: none; aspect-ratio: var(--card-ratio); overflow: hidden; background: #ddd; }
+.ds-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ds-card__caption { position: absolute; top: var(--space-2); left: var(--space-2); margin: 0; font-size: var(--text-sm); line-height: 1.5; }
+.ds-card__meta { display: none; }
+.ds-card:hover .ds-card__meta, .ds-card:focus-visible .ds-card__meta { display: block; }
+.ds-card::after { content: "\2197"; position: absolute; top: var(--space-2); right: var(--space-2); opacity: 0; transition: opacity .2s; }
+.ds-card:hover::after, .ds-card:focus-visible::after { opacity: 1; }
+
+@media (max-width: 640px) {
+  .ds-grid { grid-template-columns: 1fr; }
+  .ds-toolbar { grid-template-columns: 1fr; gap: var(--space-1); justify-items: start; }
+  .ds-toolbar > :last-child { justify-self: start; }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects</title>
+  <link rel="stylesheet" href="components.css">
+</head>
+<body class="ds-page">
+  <header class="ds-header ds-header--open">
+    <a class="ds-wordmark" href="index.html">FF Architect</a>
+    <ul class="ds-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html" aria-current="page">Projects</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <button class="ds-menu-trigger" type="button">Close</button>
+  </header>
+
+  <div class="ds-marquee" aria-hidden="true">
+    <div class="ds-marquee__track"><span>Projects</span><span>Projects</span><span>Projects</span><span>Projects</span></div>
+  </div>
+  <h1 hidden>Projects</h1>
+
+  <div class="ds-toolbar">
+    <span>6 Projects</span>
+    <button class="ds-toggle" type="button" role="switch" aria-checked="true" id="view">
+      <span>Image View</span><span class="ds-toggle__track"><span class="ds-toggle__thumb"></span></span><span>List View</span>
+    </button>
+    <span>1999-2023</span>
+  </div>
+
+  <section id="list">
+    <table class="ds-table">
+      <thead><tr><th>Project N°</th><th>Name</th><th>Location</th><th>Year</th></tr></thead>
+      <tbody>
+        <tr><td>001</td><td>Lakehouse</td><td>Auckland, New Zealand</td><td>2019-2020</td></tr>
+        <tr><td>002</td><td>Sandstone Residence</td><td>California, USA</td><td>2021-2022</td></tr>
+        <tr><td>003</td><td>Desert Oasis</td><td>Utah, USA</td><td>2022-2023</td></tr>
+        <tr><td>004</td><td>Coast Retreat</td><td>Andalusia, Spain</td><td>1999-2001</td></tr>
+        <tr><td>005</td><td>Midnight Haven</td><td>Lofoten Islands, Norway</td><td>2004-2006</td></tr>
+        <tr><td>006</td><td>Concrete Annex</td><td>Basel, Switzerland</td><td>2018-2020</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="images" class="ds-grid" hidden>
+    <a class="ds-card" href="#"><img alt="" src=""><p class="ds-card__caption">Lakehouse<span class="ds-card__meta"><br>Auckland, New Zealand</span></p></a>
+    <a class="ds-card" href="#"><img alt="" src=""><p class="ds-card__caption">Sandstone Residence<span class="ds-card__meta"><br>California, USA</span></p></a>
+  </section>
+
+  <script>
+    const t = document.getElementById('view'), list = document.getElementById('list'), imgs = document.getElementById('images');
+    t.addEventListener('click', () => {
+      const listView = t.getAttribute('aria-checked') !== 'true';
+      t.setAttribute('aria-checked', listView);
+      list.hidden = !listView; imgs.hidden = listView;
+    });
+    // start in list view
+    list.hidden = false; imgs.hidden = true;
+  </script>
+</body>
+</html>

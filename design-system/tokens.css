@@ -20,3 +20,13 @@
   --measure: 62ch;
   --gutter: 32px;
 }
+
+:root {
+  --text-display: clamp(160px, 22vw, 440px);
+  --lh-display: 0.9;
+  --rule: 1px solid var(--color-fg);
+  --row-h: 44px;
+  --card-gap: 32px;
+  --card-ratio: 3 / 2.6;
+  --focus-ring: 1px solid #2f6fdb;
+}
